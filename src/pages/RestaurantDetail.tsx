@@ -82,7 +82,7 @@ const RestaurantDetail = () => {
 
     toast({
       title: "Booking Confirmed! 🎉",
-      description: `Table for ${bookingData.guests} reserved at ${restaurant.name} on ${bookingData.date} at ${booking Data.time}`,
+      description: `Table for ${bookingData.guests} reserved at ${restaurant.name} on ${bookingData.date} at ${bookingData.time}`,
     });
   };
 
