@@ -12,7 +12,11 @@ import {
   ExternalLink,
   Users,
   Calendar,
-  ChefHat
+  ChefHat,
+  Car,
+  Bus,
+  Navigation as NavigationIcon,
+  Route
 } from "lucide-react";
 import Navigation from "../components/Navigation";
 import { Button } from "@/components/ui/button";
@@ -41,6 +45,17 @@ const RestaurantDetail = () => {
     }
   }, [id]);
 
+  // Scroll to section if hash in URL
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
+
   if (!restaurant) {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -67,12 +82,32 @@ const RestaurantDetail = () => {
 
     toast({
       title: "Booking Confirmed! 🎉",
-      description: `Table for ${bookingData.guests} reserved at ${restaurant.name} on ${bookingData.date} at ${bookingData.time}`,
+      description: `Table for ${bookingData.guests} reserved at ${restaurant.name} on ${bookingData.date} at ${booking Data.time}`,
     });
   };
 
   const openInGoogleMaps = () => {
     const url = `https://www.google.com/maps?q=${restaurant.location.lat},${restaurant.location.lng}`;
+    window.open(url, '_blank');
+  };
+
+  const getDirections = () => {
+    const url = `https://www.google.com/maps/dir/?api=1&destination=${restaurant.location.lat},${restaurant.location.lng}&travelmode=driving`;
+    window.open(url, '_blank');
+  };
+
+  const getWalkingDirections = () => {
+    const url = `https://www.google.com/maps/dir/?api=1&destination=${restaurant.location.lat},${restaurant.location.lng}&travelmode=walking`;
+    window.open(url, '_blank');
+  };
+
+  const bookOla = () => {
+    const url = `https://book.olacabs.com/?pickup=&drop=${restaurant.location.lat},${restaurant.location.lng}`;
+    window.open(url, '_blank');
+  };
+
+  const bookUber = () => {
+    const url = `https://m.uber.com/ul/?action=setPickup&drop[latitude]=${restaurant.location.lat}&drop[longitude]=${restaurant.location.lng}`;
     window.open(url, '_blank');
   };
 
@@ -196,6 +231,7 @@ const RestaurantDetail = () => {
                   {[
                     { id: "menu", name: "Menu", icon: ChefHat },
                     { id: "gallery", name: "Gallery", icon: Camera },
+                    { id: "transport", name: "How to Reach", icon: Route },
                   ].map((tab) => {
                     const Icon = tab.icon;
                     return (
@@ -269,11 +305,113 @@ const RestaurantDetail = () => {
                   ))}
                 </div>
               )}
+
+              {/* Transport Section */}
+              {activeTab === "transport" && (
+                <div id="transport" className="space-y-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center">
+                        <Route className="h-5 w-5 mr-2" />
+                        How to Reach This Restaurant
+                      </CardTitle>
+                      <CardDescription>
+                        Multiple ways to get to {restaurant.name}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                      {/* Walking Directions */}
+                      <div className="flex items-start space-x-4 p-4 bg-green-50 rounded-lg">
+                        <NavigationIcon className="h-6 w-6 text-green-600 mt-1" />
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-green-800">Walking Route</h4>
+                          <p className="text-sm text-green-700 mb-3">
+                            Get walking directions to reach the restaurant on foot.
+                          </p>
+                          <Button 
+                            onClick={getWalkingDirections}
+                            size="sm" 
+                            className="bg-green-600 hover:bg-green-700"
+                          >
+                            <NavigationIcon className="h-4 w-4 mr-2" />
+                            Get Walking Directions
+                          </Button>
+                        </div>
+                      </div>
+
+                      {/* Public Transport */}
+                      <div className="flex items-start space-x-4 p-4 bg-blue-50 rounded-lg">
+                        <Bus className="h-6 w-6 text-blue-600 mt-1" />
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-blue-800">Public Transport</h4>
+                          <p className="text-sm text-blue-700 mb-2">
+                            Nearest bus stops and metro stations:
+                          </p>
+                          <ul className="text-sm text-blue-700 space-y-1 mb-3">
+                            <li>• T-Nagar Bus Stop - 200m (Routes: 21G, 23B, 47)</li>
+                            <li>• Anna Nagar Metro - 500m (Blue Line)</li>
+                          </ul>
+                          <Button 
+                            onClick={getDirections}
+                            size="sm" 
+                            className="bg-blue-600 hover:bg-blue-700"
+                          >
+                            <Bus className="h-4 w-4 mr-2" />
+                            Get Public Transport Route
+                          </Button>
+                        </div>
+                      </div>
+
+                      {/* Cab Services */}
+                      <div className="flex items-start space-x-4 p-4 bg-yellow-50 rounded-lg">
+                        <Car className="h-6 w-6 text-yellow-600 mt-1" />
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-yellow-800">Book a Cab</h4>
+                          <p className="text-sm text-yellow-700 mb-3">
+                            Quick and convenient cab booking options:
+                          </p>
+                          <div className="flex space-x-2">
+                            <Button 
+                              onClick={bookOla}
+                              size="sm" 
+                              className="bg-yellow-600 hover:bg-yellow-700"
+                            >
+                              <Car className="h-4 w-4 mr-2" />
+                              Book Ola
+                            </Button>
+                            <Button 
+                              onClick={bookUber}
+                              size="sm" 
+                              variant="outline"
+                              className="border-yellow-600 text-yellow-700 hover:bg-yellow-50"
+                            >
+                              <Car className="h-4 w-4 mr-2" />
+                              Book Uber
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Universal Directions */}
+                      <div className="text-center pt-4 border-t">
+                        <Button 
+                          onClick={getDirections}
+                          className="bg-orange-500 hover:bg-orange-600"
+                          size="lg"
+                        >
+                          <MapPin className="h-5 w-5 mr-2" />
+                          Get Directions on Google Maps
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              )}
             </div>
 
             {/* Right Column - Booking */}
             <div className="lg:col-span-1">
-              <Card className="sticky top-8">
+              <Card className="sticky top-8" id="booking">
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <Calendar className="h-5 w-5 mr-2" />

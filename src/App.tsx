@@ -13,6 +13,9 @@ import NotFound from "./pages/NotFound";
 import OwnerLogin from "./pages/OwnerLogin";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import RestaurantDetail from "./pages/RestaurantDetail";
+import CityPage from "./pages/CityPage";
+import CategoryPage from "./pages/CategoryPage";
+import UserDashboard from "./pages/UserDashboard";
 
 const queryClient = new QueryClient();
 
@@ -31,8 +34,9 @@ const App = () => (
           <Route path="/owner-login" element={<OwnerLogin />} />
           <Route path="/owner-dashboard" element={<OwnerDashboard />} />
           <Route path="/restaurant/:id" element={<RestaurantDetail />} />
-          {/* Placeholder routes for future implementation */}
-          <Route path="/dashboard" element={<div className="pt-20 p-8">User Dashboard - Coming Soon</div>} />
+          <Route path="/city/:cityName" element={<CityPage />} />
+          <Route path="/category/:categoryName" element={<CategoryPage />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
