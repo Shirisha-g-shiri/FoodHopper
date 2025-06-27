@@ -1,73 +1,103 @@
-# Welcome to your Lovable project
+Here’s a **stunning `README.md`** for your **FoodHopper** project, complete with visuals, feature highlights, and instructions for use:
 
-## Project info
+---
 
-**URL**: https://lovable.dev/projects/ed9c3814-a955-4d9d-8f54-f6ee05f108c6
+# 🍽️ FoodHopper
 
-## How can I edit this code?
+**Discover Your Next Favorite Restaurant!**
+FoodHopper is a modern web platform to explore, search, and book tables at the best restaurants near you. Whether you're craving a cozy cafe or a classy dine-in, FoodHopper makes it effortless.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 🚀 Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ed9c3814-a955-4d9d-8f54-f6ee05f108c6) and start prompting.
+* 🔍 **Search Restaurants & Cuisines** by name, type, or location
+* 🗺️ **Find Nearby Restaurants** quickly using intuitive filters
+* 🧾 **View Dine Types**: Breakfast, Lunch, Dinner, Buffet, etc.
+* 👤 **User Dashboard** for easy booking management
+* 🔐 **Owner Login** to manage restaurant listings
+* 📱 Fully **Responsive UI** built with **React** & **Bootstrap**
+* 🎨 Aesthetic and user-friendly interface
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## 🖼️ Preview
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+> Here's a sneak peek at the landing page:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+![FoodHopper Landing Page](./image.png)
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🛠️ Tech Stack
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+* **Frontend**: React, React Router, Bootstrap, CSS
+* **State Management**: React Hooks
+* **Icons**: React-Bootstrap Icons
+* **Deployment**: GitHub Pages / Vercel / Netlify
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## 📦 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/YourUsername/FoodHopper.git
+
+# Navigate into the directory
+cd FoodHopper
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+> ⚠️ Make sure `vite.config.js` is set up with proper `base` if deploying to GitHub Pages.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 🌐 Deployment (GitHub Pages)
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Add homepage URL in `package.json`:
 
-## What technologies are used for this project?
+   ```json
+   "homepage": "https://(add ur userame eg : Shirisha-g-shiri).github.io/FoodHopper"
+   ```
 
-This project is built with:
+2. Set `base` in `vite.config.js`:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+   ```js
+   base: "/FoodHopper/",
+   ```
 
-## How can I deploy this project?
+3. Add deploy scripts:
 
-Simply open [Lovable](https://lovable.dev/projects/ed9c3814-a955-4d9d-8f54-f6ee05f108c6) and click on Share -> Publish.
+   ```json
+   "scripts": {
+     "predeploy": "npm run build",
+     "deploy": "gh-pages -d dist"
+   }
+   ```
 
-## Can I connect a custom domain to my Lovable project?
+4. Run:
 
-Yes, you can!
+   ```bash
+   npm run deploy
+   ```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📧 Contact
+
+Have feedback or feature requests?
+📬 Email us at: shirisha140105@gmail.com
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+Feel free to use, fork, and contribute!
+
