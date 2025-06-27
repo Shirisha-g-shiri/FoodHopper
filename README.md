@@ -1,7 +1,3 @@
-Here’s a **stunning `README.md`** for your **FoodHopper** project, complete with visuals, feature highlights, and instructions for use:
-
----
-
 # 🍽️ FoodHopper
 
 **Discover Your Next Favorite Restaurant!**
