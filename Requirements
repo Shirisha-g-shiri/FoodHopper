@@ -1,0 +1,5 @@
+npm install --save-dev @types/estree
+npm install --save d3 react react-dom
+npm install --save-dev @types/node @types/react @types/react-dom
+npx update-browserslist-db@latest
+npm install @tanstack/react-query
